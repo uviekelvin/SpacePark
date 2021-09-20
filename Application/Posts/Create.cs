@@ -28,7 +28,7 @@ namespace Application.Posts
         var post = new Domain.Models.Posts
         {
           UserId = request.Post.UserId,
-          Post = request.Post.Post
+          Post = request.Post.Post,
         };
         post.AddUserPost();
         this.context.Posts.Add(post);

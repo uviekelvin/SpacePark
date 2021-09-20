@@ -3,11 +3,12 @@ using System.Collections.Generic;
 
 namespace Domain.Models
 {
-  public class Users : BaseEntity
+  public class Users : BaseEntity<long>
   {
     public string FirstName { get; set; }
     public string SurName { get; set; }
     public string UserName { get; set; }
+    //public string ProfilePicture {get;set;}
     private List<PostLikes> _UserPostLikes = new List<PostLikes>();
     public IReadOnlyCollection<PostLikes> UserPostLikes => _UserPostLikes;
 
@@ -17,7 +18,7 @@ namespace Domain.Models
     public IReadOnlyCollection<Friends> Followers => _FriendFollowers;
     private List<UserPosts> _userPosts = new List<UserPosts>();
     public IReadOnlyCollection<UserPosts> UserPost => _userPosts;
-    public void SharePost(long postId)
+    public void SharePost(Guid postId)
     {
       this._userPosts.Add(new UserPosts
       {

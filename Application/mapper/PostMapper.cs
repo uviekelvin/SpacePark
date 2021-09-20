@@ -9,6 +9,7 @@ public class PostMapper : Profile
   {
     CreateMap<UserPosts, PostVm>()
     .ForMember(x => x.Post, opt => opt.MapFrom(x => x.Post.Post))
+    .ForMember(x => x.Id, opt => opt.MapFrom(x => x.PostId))
     .ForMember(x => x.PostedBy,
     opt => opt.MapFrom(x => new PostedByVm
     {

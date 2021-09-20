@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import logo from "../../logo.svg";
 import axios from "axios";
+import { Posts } from "./models/posts";
 function App() {
-  const [weather, setActivity] = useState([]);
+  const [posts, setActivity] = useState<Posts[]>([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/WeatherForecast").then((res) => {
+    axios.get("http://localhost:5000/api/v1/posts/getall").then((res) => {
       console.log(res);
       setActivity(res.data);
     });
-  },[]);
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
@@ -26,8 +26,8 @@ function App() {
           Learn React
         </a> */}
         <ul>
-          {weather.map((weather: any) => (
-            <li key={weather.temperatureC}>{weather.summary}</li>
+          {posts.map((post) => (
+            <li key={post.id}>{post.post}</li>
           ))}
         </ul>
       </header>
